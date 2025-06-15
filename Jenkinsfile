@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     environment {
-        GITHUB_REPO = 'https://github.com/your-username/TDS_A3.git' // Replace with your GitHub repo URL
+        GITHUB_REPO = 'https://github.com/ranazaeem-1/TDS_A3.git' // Replace with your GitHub repo URL
         APP_PORT = '5000'
         TEST_CONTAINER_NAME = 'tds_app_test'
     }
