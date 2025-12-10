@@ -1,261 +1,368 @@
-# TDS Assignment 3: DevOps Pipeline with Selenium, Jenkins, Docker, GitHub, and AWS
+<div align="center">
 
-This project demonstrates a complete DevOps pipeline using:
-- Flask web application with CRUD functionality
-- Selenium automated testing
-- Jenkins CI/CD pipeline
-- Docker containerization
-- GitHub for source control
-- AWS EC2 for deployment
+# 🚀 TDS Assignment 3: DevOps Pipeline
 
-## Project Overview
+### A Complete CI/CD Pipeline with Flask, Selenium, Jenkins, Docker & AWS
 
-This project is a simple inventory management system with the following features:
-- User authentication (register, login, logout)
-- Item management (add, edit, delete, search)
-- Profile management
+[![Python](https://img.shields.io/badge/Python-61. 5%25-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![HTML](https://img.shields.io/badge/HTML-33.4%25-E34F26? style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[![Docker](https://img.shields.io/badge/Docker-5. 1%25-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
+[![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+[![Jenkins](https://img.shields.io/badge/Jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white)](https://www.jenkins.io/)
+[![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white)](https://aws.amazon.com/)
 
-## Technologies Used
+</div>
 
-- **Backend**: Flask with PyMongo
-- **Frontend**: Bootstrap for responsive UI
-- **Database**: MongoDB Atlas (cloud-based NoSQL database)
-- **Testing**: Selenium with Python
-- **CI/CD**: Jenkins
-- **Containerization**: Docker
-- **Cloud**: AWS EC2
+---
 
-## Test Cases
+## 📋 Table of Contents
 
-The project includes 10 automated test cases using Selenium:
+- [Overview](#-overview)
+- [Features](#-features)
+- [Tech Stack](#-tech-stack)
+- [Project Structure](#-project-structure)
+- [Getting Started](#-getting-started)
+- [Application Routes](#-application-routes)
+- [CI/CD Pipeline](#-cicd-pipeline)
+- [Automated Testing](#-automated-testing)
+- [Docker Setup](#-docker-setup)
+- [AWS Deployment](#-aws-deployment)
+- [Troubleshooting](#-troubleshooting)
 
-1. Check if home page redirects to login when not authenticated
-2. Register a new user
-3. Test login failure with wrong credentials
-4. Validate successful login with correct credentials
-5. Add a new inventory item
-6. Edit an existing inventory item
-7. Test search functionality
-8. Delete an inventory item
-9. Update user profile
-10. Test logout functionality
+---
 
-## Local Setup
+## 🎯 Overview
 
-1. Clone the repository:
-   ```
-   git clone https://github.com/your-username/TDS_A3.git
-   cd TDS_A3
-   ```
+This project demonstrates a **production-ready DevOps pipeline** for an inventory management system. It showcases modern development practices including containerization, continuous integration, automated testing, and cloud deployment. 
 
-2. Install dependencies:
-   ```
-   pip install -r requirements.txt
-   ```
+<div align="center">
 
-3. Run the application:
-   ```
-   python app.py
-   ```
-   The application should now be running at http://localhost:5000
+```
+┌─────────────┐     ┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+│   GitHub    │────▶│   Jenkins   │────▶│   Docker    │────▶│    AWS      │
+│  (Source)   │     │  (CI/CD)    │     │  (Build)    │     │  (Deploy)   │
+└─────────────┘     └─────────────┘     └─────────────┘     └─────────────┘
+                           │
+                           ▼
+                    ┌─────────────┐
+                    │  Selenium   │
+                    │  (Testing)  │
+                    └─────────────┘
+```
 
-4. Run the tests locally:
-   ```
-   pytest -v tests/test_selenium.py
-   ```
+</div>
 
-## Detailed Implementation Steps
+---
 
-### 1. Setting Up Your Development Environment
+## ✨ Features
 
-1. Install Python 3.9+ if not already installed
-2. Install Chrome browser and ChromeDriver for Selenium tests
-3. Create and activate a virtual environment:
-   ```
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
-4. Install required packages:
-   ```
-   pip install -r requirements.txt
-   ```
+| Feature | Description |
+|---------|-------------|
+| 🔐 **User Authentication** | Secure registration, login, and logout functionality |
+| 📦 **Inventory Management** | Full CRUD operations for inventory items |
+| 🔍 **Search Functionality** | Search items by name with regex support |
+| 👤 **Profile Management** | Update user profile and email |
+| 🎨 **Responsive UI** | Bootstrap-powered modern interface |
+| 🧪 **Automated Testing** | 10 Selenium test cases for comprehensive coverage |
+| 🐳 **Containerized** | Docker support for consistent environments |
+| 🔄 **CI/CD Pipeline** | Automated builds and deployments with Jenkins |
 
-### 2. GitHub Repository Setup
+---
 
-1. Create a new repository on GitHub (e.g., TDS_A3)
-2. Initialize your local repository:
-   ```
-   git init
-   git add .
-   git commit -m "Initial commit"
-   git branch -M main
-   git remote add origin https://github.com/your-username/TDS_A3.git
-   git push -u origin main
-   ```
+## 🛠 Tech Stack
 
-### 3. AWS EC2 Instance Setup
+<table>
+<tr>
+<td align="center" width="150">
 
-1. Launch a t2.micro Ubuntu EC2 instance on AWS
-2. Configure security groups to allow traffic on ports:
-   - 22 (SSH)
-   - 8080 (Jenkins)
-   - 5000 (Application)
-3. Connect to your instance via SSH:
-   ```
-   ssh -i your-key.pem ubuntu@your-instance-ip
-   ```
+### Backend
+![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white)
 
-### 4. Setting Up Jenkins on EC2
+Flask + PyMongo
 
-1. Update packages and install Java:
-   ```
-   sudo apt update
-   sudo apt install openjdk-11-jdk -y
-   ```
+</td>
+<td align="center" width="150">
 
-2. Install Jenkins:
-   ```
-   wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
-   sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
-   sudo apt update
-   sudo apt install jenkins -y
-   ```
+### Database
+![MongoDB](https://img.shields.io/badge/-MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white)
 
-3. Start Jenkins service:
-   ```
-   sudo systemctl start jenkins
-   sudo systemctl enable jenkins
-   ```
+MongoDB Atlas
 
-4. Get the initial admin password:
-   ```
-   sudo cat /var/lib/jenkins/secrets/initialAdminPassword
-   ```
+</td>
+<td align="center" width="150">
 
-5. Access Jenkins in your browser at http://your-instance-ip:8080
-   - Enter the admin password
-   - Install suggested plugins
-   - Create an admin user when prompted
+### Frontend
+![Bootstrap](https://img.shields.io/badge/-Bootstrap-7952B3?style=flat-square&logo=bootstrap&logoColor=white)
 
-6. Install additional Jenkins plugins:
-   - Go to "Manage Jenkins" > "Manage Plugins" > "Available"
-   - Install: Docker Pipeline, GitHub Integration, Email Extension
+Responsive UI
 
-### 5. Setting Up Docker on EC2
+</td>
+<td align="center" width="150">
 
-1. Install Docker:
-   ```
-   sudo apt update
-   sudo apt install docker.io -y
-   ```
+### Testing
+![Selenium](https://img.shields.io/badge/-Selenium-43B02A?style=flat-square&logo=selenium&logoColor=white)
 
-2. Add the Jenkins user to the Docker group:
-   ```
-   sudo usermod -aG docker jenkins
-   ```
+Automated Tests
 
-3. Restart Jenkins and Docker:
-   ```
-   sudo systemctl restart docker
-   sudo systemctl restart jenkins
-   ```
+</td>
+</tr>
+<tr>
+<td align="center" width="150">
 
-### 6. Creating the Jenkins Pipeline
+### CI/CD
+![Jenkins](https://img.shields.io/badge/-Jenkins-D24939?style=flat-square&logo=jenkins&logoColor=white)
 
-1. In Jenkins, click "New Item"
-2. Enter a name for your pipeline and select "Pipeline"
-3. Configure the pipeline:
-   - Under "Pipeline", select "Pipeline script from SCM"
-   - Select "Git" as the SCM
-   - Enter your GitHub repository URL
-   - Specify the branch to build (e.g., "main")
-   - Script Path: "Jenkinsfile" (this should match the name of your Jenkinsfile)
-4. Save the pipeline configuration
+Pipeline Automation
 
-### 7. Setting Up GitHub Webhook
+</td>
+<td align="center" width="150">
 
-1. In your GitHub repository, go to "Settings" > "Webhooks" > "Add webhook"
-2. Set Payload URL to: `http://your-instance-ip:8080/github-webhook/`
-3. Select "Content type" as "application/json"
-4. Under "Which events would you like to trigger this webhook?", select "Just the push event"
-5. Make sure "Active" is checked and click "Add webhook"
+### Container
+![Docker](https://img.shields.io/badge/-Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
 
-### 8. Running the Full CI/CD Pipeline
+Containerization
 
-1. Push changes to your GitHub repository:
-   ```
-   git add .
-   git commit -m "Update application code"
-   git push
-   ```
+</td>
+<td align="center" width="150">
 
-2. This will automatically trigger the Jenkins pipeline, which will:
-   - Clone your repository
-   - Build a Docker image
-   - Run your application in a container
-   - Execute Selenium tests
-   - Send email notifications with results
+### Cloud
+![AWS](https://img.shields.io/badge/-AWS-232F3E?style=flat-square&logo=amazon-aws&logoColor=white)
 
-3. Monitor the pipeline execution in Jenkins at http://your-instance-ip:8080
+EC2 Deployment
 
-### 9. Troubleshooting
+</td>
+<td align="center" width="150">
 
-If you encounter issues with Selenium tests in the Docker environment:
-1. Make sure you're using headless Chrome in your Selenium tests
-2. Verify ChromeDriver version matches your Chrome version
-3. Check Docker logs for any errors:
-   ```
-   docker logs <container_id>
-   ```
+### Version Control
+![GitHub](https://img.shields.io/badge/-GitHub-181717?style=flat-square&logo=github&logoColor=white)
 
-### 10. Documentation
+Source Control
 
-Document your implementation with screenshots of:
-1. Jenkins pipeline execution
-2. GitHub webhook configuration
-3. EC2 instance details
-4. Successful test execution results
+</td>
+</tr>
+</table>
 
-## Docker Setup
+---
 
-1. Build the Docker image:
-   ```
-   docker build -t tds_flask_app .
-   ```
+## 📁 Project Structure
 
-2. Run the application in a container:
-   ```
-   docker run -p 5000:5000 tds_flask_app
-   ```
+```
+TDS_A3/
+├── 📄 app.py                    # Main Flask application
+├── 🐳 Dockerfile                # Docker container configuration
+├── 🔧 Jenkinsfile               # CI/CD pipeline definition
+├── 📋 requirements.txt          # Python dependencies
+├── 🧪 mongo_test.py             # MongoDB connection test
+├── 🧪 test_mongo_connection.py  # Connection verification
+├── 📁 templates/                # HTML templates
+│   ├── base.html                # Base template with navigation
+│   ├── home.html                # Dashboard/inventory list
+│   ├── login. html               # User login page
+│   ├── register.html            # User registration page
+│   ├── add_item.html            # Add new inventory item
+│   ├── edit_item.html           # Edit existing item
+│   ├── profile.html             # User profile management
+│   └── search_results.html      # Search results display
+└── 📁 tests/
+    └── test_selenium.py         # Selenium automated tests
+```
 
-## CI/CD Pipeline
+---
 
-The pipeline performs the following steps:
-1. Checkout code from GitHub
-2. Build Docker image
-3. Run the application in a container
-4. Execute Selenium tests
-5. Send email notifications based on test results
+## 🚀 Getting Started
 
-## GitHub Integration
+### Prerequisites
 
-1. Set up a webhook in your GitHub repository
-2. Configure the webhook to trigger your Jenkins pipeline on push events
-3. URL format: `http://<EC2-IP>:8080/github-webhook/`
+- Python 3.9+
+- Chrome Browser
+- Docker (optional)
+- Git
 
-## AWS Deployment
+### Quick Start
 
-1. Launch an EC2 t2.micro Ubuntu instance
-2. Install Jenkins, Docker, and required plugins
-3. Configure security groups to allow traffic on ports:
-   - 22 (SSH)
-   - 8080 (Jenkins)
-   - 5000 (Application)
+```bash
+# 1️⃣ Clone the repository
+git clone https://github.com/ranazaeem-1/TDS_A3.git
+cd TDS_A3
 
-## Screenshots
+# 2️⃣ Create virtual environment
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
 
-Include screenshots of:
-- Jenkins pipeline setup
-- Successful test execution
-- GitHub webhook configuration
-- EC2 instance running the application
+# 3️⃣ Install dependencies
+pip install -r requirements.txt
+
+# 4️⃣ Run the application
+python app.py
+```
+
+🌐 **Access the app at:** `http://localhost:5000`
+
+---
+
+## 🗺 Application Routes
+
+| Route | Method | Description | Auth Required |
+|-------|--------|-------------|:-------------:|
+| `/` | GET | Home page / Inventory dashboard | ✅ |
+| `/login` | GET, POST | User login | ❌ |
+| `/register` | GET, POST | New user registration | ❌ |
+| `/logout` | GET | User logout | ✅ |
+| `/add_item` | GET, POST | Add new inventory item | ✅ |
+| `/edit_item/<id>` | GET, POST | Edit existing item | ✅ |
+| `/delete_item/<id>` | GET | Delete an item | ✅ |
+| `/search` | GET, POST | Search inventory | ✅ |
+| `/profile` | GET, POST | User profile management | ✅ |
+
+---
+
+## 🔄 CI/CD Pipeline
+
+The Jenkins pipeline automates the entire build, test, and notification process:
+
+```mermaid
+graph LR
+    A[📥 Checkout] --> B[🔨 Build Docker Image]
+    B --> C[🚀 Run Container]
+    C --> D[🧪 Run Selenium Tests]
+    D --> E{✅ Tests Pass?}
+    E -->|Yes| F[📧 Success Email]
+    E -->|No| G[📧 Failure Email]
+    F --> H[🧹 Cleanup]
+    G --> H
+```
+
+### Pipeline Stages
+
+| Stage | Description |
+|-------|-------------|
+| **Checkout** | Cleans workspace and pulls latest code from GitHub |
+| **Build Docker Image** | Creates container image with all dependencies |
+| **Run App Container** | Starts the application in a Docker container |
+| **Run Selenium Tests** | Executes all 10 automated test cases |
+| **Post Actions** | Sends email notifications and cleans up containers |
+
+---
+
+## 🧪 Automated Testing
+
+The project includes **10 comprehensive Selenium test cases**:
+
+| # | Test Case | Description |
+|---|-----------|-------------|
+| 1 | 🏠 Home Redirect | Verifies unauthenticated users are redirected to login |
+| 2 | 📝 User Registration | Tests new user signup flow |
+| 3 | ❌ Login Failure | Validates error handling for wrong credentials |
+| 4 | ✅ Successful Login | Confirms login with correct credentials |
+| 5 | ➕ Add Item | Tests adding new inventory items |
+| 6 | ✏️ Edit Item | Verifies item modification functionality |
+| 7 | 🔍 Search | Tests search functionality |
+| 8 | 🗑️ Delete Item | Confirms item deletion |
+| 9 | 👤 Update Profile | Tests profile update feature |
+| 10 | 🚪 Logout | Verifies logout functionality |
+
+### Running Tests Locally
+
+```bash
+pytest -v tests/test_selenium.py
+```
+
+---
+
+## 🐳 Docker Setup
+
+### Build & Run
+
+```bash
+# Build the Docker image
+docker build -t tds_flask_app . 
+
+# Run the container
+docker run -p 5000:5000 tds_flask_app
+```
+
+### Docker Configuration
+
+The Dockerfile includes:
+- ✅ Python 3.9 slim base image
+- ✅ Chrome & ChromeDriver for Selenium tests
+- ✅ All required system dependencies
+- ✅ MongoDB Atlas connection setup
+
+---
+
+## ☁️ AWS Deployment
+
+### EC2 Instance Setup
+
+1. **Launch Instance**:  Ubuntu t2.micro
+2. **Security Groups**:  Open ports 22, 5000, 8080
+
+### Required Installations
+
+```bash
+# Update system
+sudo apt update && sudo apt upgrade -y
+
+# Install Java (for Jenkins)
+sudo apt install openjdk-11-jdk -y
+
+# Install Docker
+sudo apt install docker.io -y
+sudo usermod -aG docker jenkins
+
+# Install Jenkins
+wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources. list.d/jenkins.list'
+sudo apt update && sudo apt install jenkins -y
+```
+
+### GitHub Webhook Configuration
+
+```
+Payload URL: http://<EC2-IP>:8080/github-webhook/
+Content Type: application/json
+Events: Push events
+```
+
+---
+
+## 🔧 Troubleshooting
+
+<details>
+<summary><b>🔴 Selenium tests failing in Docker? </b></summary>
+
+- Ensure headless Chrome mode is enabled
+- Verify ChromeDriver version matches Chrome version
+- Check container logs:  `docker logs <container_id>`
+
+</details>
+
+<details>
+<summary><b>🔴 MongoDB connection issues?</b></summary>
+
+- Verify MongoDB Atlas connection string
+- Check network access settings in MongoDB Atlas
+- Ensure IP whitelist includes your server
+
+</details>
+
+<details>
+<summary><b>🔴 Jenkins pipeline not triggering?</b></summary>
+
+- Verify webhook URL is correct
+- Check Jenkins security settings
+- Ensure GitHub webhook shows successful deliveries
+
+</details>
+
+---
+
+<div align="center">
+
+### 🌟 Made with ❤️ for TDS Assignment 3
+
+**[View Repository](https://github.com/ranazaeem-1/TDS_A3)** • **[Report Issues](https://github.com/ranazaeem-1/TDS_A3/issues)**
+
+</div>
