@@ -4,13 +4,7 @@
 
 ### A Complete CI/CD Pipeline with Flask, Selenium, Jenkins, Docker & AWS
 
-[![Python](https://img.shields.io/badge/Python-61. 5%25-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
-[![HTML](https://img.shields.io/badge/HTML-33.4%25-E34F26? style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
-[![Docker](https://img.shields.io/badge/Docker-5. 1%25-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
-[![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
-[![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
-[![Jenkins](https://img.shields.io/badge/Jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white)](https://www.jenkins.io/)
-[![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white)](https://aws.amazon.com/)
+
 
 </div>
 
@@ -28,7 +22,7 @@
 - [Automated Testing](#-automated-testing)
 - [Docker Setup](#-docker-setup)
 - [AWS Deployment](#-aws-deployment)
-- [Troubleshooting](#-troubleshooting)
+
 
 ---
 
@@ -328,34 +322,11 @@ Events: Push events
 
 ---
 
-## 🔧 Troubleshooting
 
-<details>
-<summary><b>🔴 Selenium tests failing in Docker? </b></summary>
 
-- Ensure headless Chrome mode is enabled
-- Verify ChromeDriver version matches Chrome version
-- Check container logs:  `docker logs <container_id>`
 
-</details>
 
-<details>
-<summary><b>🔴 MongoDB connection issues?</b></summary>
 
-- Verify MongoDB Atlas connection string
-- Check network access settings in MongoDB Atlas
-- Ensure IP whitelist includes your server
-
-</details>
-
-<details>
-<summary><b>🔴 Jenkins pipeline not triggering?</b></summary>
-
-- Verify webhook URL is correct
-- Check Jenkins security settings
-- Ensure GitHub webhook shows successful deliveries
-
-</details>
 
 ---
 
